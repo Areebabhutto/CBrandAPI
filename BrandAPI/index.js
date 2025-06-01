@@ -15,9 +15,9 @@ app.get('/',async(req,res)=>{
     }
 });
 
-app.get('/employee',async(req,res)=>{
+app.get('/branches',async(req,res)=>{
     try{
-        const result = await pool.query('select * from employees');
+        const result = await pool.query('select * from branches');
         res.json(result.rows);
     }catch(err)
     {
