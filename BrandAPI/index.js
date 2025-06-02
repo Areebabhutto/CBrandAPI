@@ -25,6 +25,60 @@ app.get('/branches',async(req,res)=>{
     }
 });
 
+app.get('/categories',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from categories');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
+
+
+app.get('/customers',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from customers');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/employees',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from employees');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/inventory',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from inventory');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/order_items',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from order_items');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
+
+
+
+
 
 const PORT = process.env.PORT;
 app.listen(PORT,()=>{
