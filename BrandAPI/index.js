@@ -76,8 +76,46 @@ app.get('/order_items',async(req,res)=>{
     }
 });
 
+app.get('/orders',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from orders');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/payments',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from payments');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/products',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from products');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
 
 
+app.get('/suppliers',async(req,res)=>{
+    try{
+        const result = await pool.query('select * from suppliers');
+        res.json(result.rows);
+    }catch(err)
+    {
+        res.status(500).json({Error:err.message});
+    }
+});
 
 
 const PORT = process.env.PORT;
