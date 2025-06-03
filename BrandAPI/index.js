@@ -117,6 +117,24 @@ app.get('/suppliers',async(req,res)=>{
     }
 });
 
+app.get('/api/daily-orders', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT TO_CHAR(order_date, 'YYYY-MM-DD') AS order_day,
+             COUNT(*) AS order_count
+      FROM orders
+      GROUP BY order_day
+      ORDER BY order_day
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+
 
 const PORT = process.env.PORT;
 app.listen(PORT,()=>{
