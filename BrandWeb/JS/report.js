@@ -28,3 +28,15 @@ fetch(report_url)
   .catch(error => {
     console.error("Error loading report:", error.message);
   });
+
+  document.getElementById("exportBtn").addEventListener("click", () => {
+  const reportElement = document.querySelector(".report-container");
+  const opt = {
+    margin:       0.5,
+    filename:     'Order_Report_Summary.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 2 },
+    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+  html2pdf().set(opt).from(reportElement).save();
+});

@@ -1,4 +1,4 @@
-// Replace with your actual endpoint URL for branches
+
 const branches_url = "https://potential-rotary-phone-g46jrrg5v7pp25rr-6005.app.github.dev/branches";
 
 fetch(branches_url)
